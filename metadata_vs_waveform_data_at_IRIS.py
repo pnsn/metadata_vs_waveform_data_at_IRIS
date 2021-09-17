@@ -20,7 +20,6 @@ import requests
 import time
 import datetime
 
-seismic_channels_prefix = [ 'EH', 'SH', 'EN', 'HN', 'HH', 'BH' ]
 nslc_yes_data = set()
 nslc_no_data = set()
 nslc_tried = set()
@@ -35,7 +34,7 @@ for line in request.text.splitlines():
     if ( loc == "" ): loc = "--"
     cha = line.split('|')[3]
     nslc = net + '.' + sta + '.' + loc + '.' + cha
-    if ( cha[0:2] in seismic_channels_prefix and nslc not in nslc_tried ):
+    if ( nslc not in nslc_tried ):
         nslc_tried.add(nslc)
         url_avail = "http://service.iris.edu/fdsnws/availability/1/extent?format=text&net=" + net + "&sta=" + sta + "&loc=" + loc + "&cha=" + cha + "&orderby=nslc_time_quality_samplerate&includerestricted=false&nodata=404"
 #        print('Trying: ',nslc, url_avail)
