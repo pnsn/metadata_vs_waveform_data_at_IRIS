@@ -15,7 +15,7 @@ UW|ALKI||HNZ|47.5751|-122.4176|1|0|0|-90|NANOMETRICS|204000.0|1|m/s**2|200|2017-
 UW|ALKI||HNZ|47.5751|-122.4176|1|0|0|-90|NANOMETRICS|204000.0|1|m/s**2|200|2020-08-05T19:50:15|
 
 Example of availability webservice:
-http://service.iris.edu/fdsnws/availability/1/extent?format=text&net=UW,UO,CC&sta=ALKI&loc=--&cha=HNZ&orderby=nslc_time_quality_samplerate&includerestricted=false&starttime=2017-05-02T00:00:00.0000&endtime=2020-08-05T19:50:15.0000&nodata=404
+http://service.iris.edu/fdsnws/availability/1/extent?format=text&net=CC,UO,UW&sta=ALKI&loc=--&cha=HNZ&orderby=nslc_time_quality_samplerate&includerestricted=false&starttime=2017-05-02T00:00:00.0000&endtime=2020-08-05T19:50:15.0000&nodata=404
 
 Alex Oct 19, 2021
 '''
@@ -27,7 +27,7 @@ import datetime
 nslc_yes_data = set()
 nslc_no_data = set()
 nslc_tried = set()
-urlMD = "http://service.iris.edu/fdsnws/station/1/query?level=channel&network=UW&format=text"
+urlMD = "http://service.iris.edu/fdsnws/station/1/query?level=channel&network=CC,UO,UW&format=text"
 request = requests.get(urlMD)
 now = datetime.datetime.now()
 Tnow = now.strftime("%Y-%m-%dT%H:%M:%S")
